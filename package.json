@@ -9,7 +9,7 @@
     "dev": "nodemon .",
     "sass": "sass --watch ./src/styles/sass/index.scss ./public/styles/index.css",
     "predeploy": "npm start",
-    "deploy": "gh-pages -d index.js"
+    "deploy": "npm run build && gh-pages -d public"
   },
   "keywords": [],
   "author": "Julio Cesar Pariona Ventura",

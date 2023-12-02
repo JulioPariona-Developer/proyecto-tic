@@ -6,7 +6,7 @@ const renderSessions = (req, res, next) => {
   try {
     const user = req.user;
     if(user) return res.redirect('/vote');
-    const indexHtml = path.resolve(process.cwd(), "./public/sessions.html");
+    const indexHtml = path.resolve(process.cwd(), "./public/index.html");
     res.status(200).sendFile(indexHtml);
   } catch (error) { next(error); }
 }

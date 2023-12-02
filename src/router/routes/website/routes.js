@@ -1,6 +1,6 @@
 const Controller = require('../../../controllers/index.controller');
 const { Router } = require('express');
-const auth = require('../../../middlewares/auth.middleware');
+// const auth = require('../../../middlewares/auth.middleware');
 
 const controller = new Controller().views;
 const webSiteRoutes = Router();
@@ -8,8 +8,8 @@ const webSiteRoutes = Router();
 //Routes
   // SESSIONS
   webSiteRoutes.get('/', controller.renderSessions);
-  webSiteRoutes.get('/login-error', controller.renderError);
-  webSiteRoutes.get('/logout', auth, controller.renderLogout);
+  // webSiteRoutes.get('/login-error', controller.renderError);
+  // webSiteRoutes.get('/logout', auth, controller.renderLogout);
   // // USER
   // webSiteRoutes.get('/profile', auth, controller.renderProfile);
   // // MESSAGES
