@@ -1,0 +1,22 @@
+{
+  "name": "proyectofinal_tic",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node .",
+    "dev": "nodemon .",
+    "sass": "sass --watch ./src/styles/sass/index.scss ./public/styles/index.css"
+  },
+  "keywords": [],
+  "author": "Julio Cesar Pariona Ventura",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "minimist": "^1.2.8",
+    "mongoose": "^8.0.2",
+    "nodemon": "^3.0.1"
+  }
+}

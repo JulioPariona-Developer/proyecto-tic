@@ -1,0 +1,25 @@
+// █ █▄ ▄█ █▀▄ ▄▀▄ █▀▄ ▀█▀ ▄▀▄ █▄ █ ▀█▀ 
+// █ █ ▀ █ █▀  ▀▄▀ █▀▄  █  █▀█ █ ▀█  █  
+@import "./abstracts/reset";
+
+// ▄▀  ██▀ █▄ █ ██▀ █▀▄ ▄▀▄ █   
+// ▀▄█ █▄▄ █ ▀█ █▄▄ █▀▄ █▀█ █▄▄ 
+@import "./abstracts/measures";
+@import "./abstracts/shortener";
+@import "./abstracts/animations";
+@import "./layout/generic/load";
+@import "./layout/base";
+@import "./layout/generic/aside";
+
+// █▄█ ██▀ ▄▀▄ █▀▄ ██▀ █▀▄ 
+// █ █ █▄▄ █▀█ █▄▀ █▄▄ █▀▄ 
+// @import "./layout/header";
+
+// █▄ ▄█ ▄▀▄ █ █▄ █ 
+// █ ▀ █ █▀█ █ █ ▀█ 
+@import "./pages/session";
+@import "./pages/home";
+
+// █▀ ▄▀▄ ▄▀▄ ▀█▀ ██▀ █▀▄ 
+// █▀ ▀▄▀ ▀▄▀  █  █▄▄ █▀▄ 
+// @import "./layout/footer";

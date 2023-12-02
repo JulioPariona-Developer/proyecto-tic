@@ -1,0 +1,28 @@
+body {
+  display: grid;
+  grid-template-areas: ". Gheader ." ". Gmain ." ". Gfooter .";
+  grid-template-columns: 1fr minmax(1024px, auto) 1fr;
+  grid-template-rows: auto;
+  min-height: 100vh;
+  transition: .3s all;
+  background-color: midnightblue;
+  & header {
+    grid-area: Gheader;
+  }
+  & main {
+    grid-area: Gmain;
+  }
+  & footer {
+    grid-area: Gfooter;
+  }
+}
+.img {
+  display: block;
+  margin: auto;
+  @include img(contain);
+}
+
+.enclose {
+  @include before("(");
+  @include after(")");
+}

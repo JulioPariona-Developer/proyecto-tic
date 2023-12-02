@@ -1,0 +1,68 @@
+@mixin text-category-variable($percentage) {
+  @if ($percentage == 0%) {
+    opacity: 0;
+    transform: scale(3);
+  }
+  @if ($percentage == 100%) {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@mixin img($type) {
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: $type;
+  }
+}
+@mixin after($content: null) {
+  &::after {
+    @if $content {
+      content: $content;
+    }
+    @content;
+  }
+}
+@mixin before($content: null) {
+  &::before {
+    @if $content {
+      content: $content;
+    }
+    @content;
+  }
+}
+@mixin pseudo() {
+  &::before, &::after {
+    @content;
+  }
+}
+@mixin buttonsDefault() {
+  box-shadow: 0 0 1rem transparent;
+  transform: scale(.98);
+  position: relative;
+  padding: 1rem;
+  font-family: consolas;
+  border-radius: 3rem;
+  border: 0 transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  opacity: .8;
+  transition: .3s;
+  &:hover {
+    transform: scale(1);
+    box-shadow: 0 0 1rem black;
+    opacity: 1;
+  }
+}
+@mixin btnPrimary() {
+  background-color: midnightblue;
+  color: white;
+  @include buttonsDefault;
+}
+@mixin btnSecundary() {
+  background-color: white;
+  color: midnightblue;
+  @include buttonsDefault;
+}

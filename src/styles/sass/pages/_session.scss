@@ -1,0 +1,127 @@
+.page {
+  &-login {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 2rem;
+    grid-template-areas: "Gimg Gform";
+    min-height: 100vh;
+    &__left {
+      grid-area: Gimg;
+      & .img {
+        width: 65%;
+      }
+    }
+    &__right {
+      grid-area: Gform;
+    }
+  }
+}
+.login {
+  border-radius: 3rem;
+  background-color: rgb(200, 215, 255);
+  box-shadow: 0 0 .5rem black;
+  padding: 4rem 2rem;
+  font-size: 4rem;
+  display: grid;
+  grid-template-rows: 5rem 5rem auto;
+  gap: 2rem;
+  justify-content: center;
+  position: relative;
+  &__title {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 2rem;
+  }
+  &__inputs {
+    outline: none;
+    border: none;
+    min-width: 50%;
+    max-width: 85%;
+    width: 35rem;
+    height: 5rem;
+    display: flex;
+    justify-self: center;
+    position: relative;
+    font-size: 3rem;
+    cursor: text;
+    background-color: white;
+    border-radius: 2rem;
+    & label {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      top: 0;
+      left: 2rem;
+      bottom: 0;
+      height: 100%;
+      color: rgb(151, 151, 151);
+      z-index: 1;
+      transition: .3s;
+      cursor: text;
+    }
+    & input {
+      border-radius: 2rem;
+      outline: none;
+      border: .2rem solid midnightblue;
+      width: 100%;
+      height: 100%;
+      color: midnightblue;
+      background-color: transparent;
+      z-index: 0;
+      font-size: 2.5rem;
+      padding: 1rem 2rem 0;
+      -moz-appearance: textfield;
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+      }
+      &:focus {
+        box-shadow: 0 0 .5rem midnightblue;
+        & ~ label {
+          height: 50%;
+          font-size: 1.3rem;
+        }
+      }
+    }
+  }
+  &__buttons {
+    display: grid;
+    gap: 2rem;
+    border: none;
+    justify-content: center;
+    grid-template-columns: 1fr;
+    grid-template-rows: 7rem 5rem 5rem;
+    min-width: 50%;
+    max-width: 85%;
+    width: 100%;
+    margin: auto;
+    @include before("") {
+      display: block;
+      position: absolute;
+      top: 25rem;
+      left: 0;
+      right: 0;
+      height: .15rem;
+      width: 92%;
+      margin: 0 auto;
+      background-color: gray;
+    }
+    & > * {
+      &:first-child {
+        margin-bottom: 2rem;
+        height: 5rem;
+        @include btnPrimary;
+      }
+      &:not(:first-child) {
+        height: 5rem;
+        @include btnSecundary;
+      }
+      &[disabled] {
+        pointer-events: none;
+        text-decoration: line-through;
+      }
+    }
+  }
+}

@@ -1,0 +1,461 @@
+* {
+  box-sizing: border-box;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  outline: none;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  overflow: hidden;
+}
+
+a {
+  text-decoration: none;
+}
+
+button, a {
+  cursor: pointer;
+}
+
+@keyframes loading {
+  0% {
+    content: "Cargando";
+  }
+  33% {
+    content: "Cargando.";
+  }
+  66% {
+    content: "Cargando..";
+  }
+  100% {
+    content: "Cargando...";
+  }
+}
+@keyframes modalAlert {
+  0% {
+    transform: scale(0);
+  }
+  55% {
+    transform: scale(1.1);
+  }
+  85% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes preload {
+  0% {
+    opacity: 0;
+    z-index: -1;
+  }
+  50%, 100% {
+    opacity: 1;
+    z-index: 1;
+  }
+}
+@keyframes preload-BeforeAfter {
+  0% {
+    border: 100rem solid red;
+  }
+  50%, 100% {
+    border: 45rem solid red;
+    border-top: 10rem solid red;
+    border-bottom: 10rem solid red;
+  }
+}
+@keyframes preload-Img {
+  0% {
+    transform: scale(3);
+  }
+  50%, 100% {
+    transform: scale(1);
+  }
+}
+body > * {
+  opacity: 0;
+  z-index: -1;
+}
+body.body-start > *:not(.preload, aside) {
+  opacity: 1;
+  z-index: inherit;
+}
+
+.preload {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  background-color: white;
+  opacity: 0;
+  z-index: -1;
+}
+.preload::before, .preload::after {
+  display: block;
+  position: fixed;
+  border: 100rem solid red;
+  width: 0;
+  height: 0;
+  animation: preload-BeforeAfter 2s ease infinite alternate;
+  animation-iteration-count: 2;
+  z-index: 2;
+}
+.preload::before {
+  content: "";
+  top: 0;
+  left: 0;
+  border-right-color: transparent !important;
+  border-bottom-color: transparent !important;
+}
+.preload::after {
+  content: "";
+  bottom: 0;
+  right: 0;
+  border-left-color: transparent !important;
+  border-top-color: transparent !important;
+}
+.preload-active {
+  animation: preload 2s ease infinite alternate;
+  animation-iteration-count: 2;
+}
+.preload__img {
+  display: block;
+  width: 25rem;
+  height: 25rem;
+  transform: scale(3);
+  animation: preload-Img 2s ease infinite alternate;
+  animation-iteration-count: 2;
+  z-index: 1;
+}
+
+body {
+  display: grid;
+  grid-template-areas: ". Gheader ." ". Gmain ." ". Gfooter .";
+  grid-template-columns: 1fr minmax(1024px, auto) 1fr;
+  grid-template-rows: auto;
+  min-height: 100vh;
+  transition: 0.3s all;
+  background-color: midnightblue;
+}
+body header {
+  grid-area: Gheader;
+}
+body main {
+  grid-area: Gmain;
+}
+body footer {
+  grid-area: Gfooter;
+}
+
+.img {
+  display: block;
+  margin: auto;
+}
+.img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.enclose::before {
+  content: "(";
+}
+.enclose::after {
+  content: ")";
+}
+
+aside {
+  position: fixed;
+  background-color: black;
+}
+aside > * {
+  margin: auto;
+}
+
+.modal {
+  background-color: rgba(0, 0, 0, 0.5);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  backdrop-filter: blur(1rem);
+  z-index: -1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: 0.3s;
+}
+.modal > section {
+  padding: 2rem;
+  border-radius: 5rem;
+  box-shadow: 0 0 1rem black;
+}
+.modal--welcome {
+  opacity: 1;
+  z-index: 100;
+}
+.modal--welcome .welcome {
+  transform: translateY(0) !important;
+}
+
+.modal .welcome {
+  align-self: flex-end;
+  margin: 0;
+  padding: 2rem 4rem;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  background-color: rgb(223, 22, 22);
+  text-align: center;
+  display: grid;
+  gap: 1rem;
+  grid-template-rows: 2fr 1fr;
+  transform: translateY(100%);
+  min-height: 38vh;
+  max-width: 80vw;
+  width: 33rem;
+  min-width: 50vw;
+  align-items: center;
+  transition: 1s;
+}
+.modal .welcome h2 {
+  font-weight: bold;
+  font-size: 4rem;
+}
+.modal .welcome__text {
+  display: grid;
+  color: white;
+  gap: 1rem;
+  font-size: 3rem;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  cursor: context-menu;
+}
+.modal .welcome__buttons {
+  display: flex;
+  justify-content: space-evenly;
+}
+.modal .welcome__buttons > * {
+  font-size: 2.8rem;
+  height: 5rem;
+  width: 16rem;
+}
+.modal .welcome__buttons > *:first-child {
+  background-color: midnightblue;
+  color: white;
+  box-shadow: 0 0 1rem transparent;
+  transform: scale(0.98);
+  position: relative;
+  padding: 1rem;
+  font-family: consolas;
+  border-radius: 3rem;
+  border: 0 transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  opacity: 0.8;
+  transition: 0.3s;
+}
+.modal .welcome__buttons > *:first-child:hover {
+  transform: scale(1);
+  box-shadow: 0 0 1rem black;
+  opacity: 1;
+}
+.modal .welcome__buttons > *:last-child {
+  background-color: white;
+  color: midnightblue;
+  box-shadow: 0 0 1rem transparent;
+  transform: scale(0.98);
+  position: relative;
+  padding: 1rem;
+  font-family: consolas;
+  border-radius: 3rem;
+  border: 0 transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  opacity: 0.8;
+  transition: 0.3s;
+}
+.modal .welcome__buttons > *:last-child:hover {
+  transform: scale(1);
+  box-shadow: 0 0 1rem black;
+  opacity: 1;
+}
+
+.page-login {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 2rem;
+  grid-template-areas: "Gimg Gform";
+  min-height: 100vh;
+}
+.page-login__left {
+  grid-area: Gimg;
+}
+.page-login__left .img {
+  width: 65%;
+}
+.page-login__right {
+  grid-area: Gform;
+}
+
+.login {
+  border-radius: 3rem;
+  background-color: rgb(200, 215, 255);
+  box-shadow: 0 0 0.5rem black;
+  padding: 4rem 2rem;
+  font-size: 4rem;
+  display: grid;
+  grid-template-rows: 5rem 5rem auto;
+  gap: 2rem;
+  justify-content: center;
+  position: relative;
+}
+.login__title {
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+.login__inputs {
+  outline: none;
+  border: none;
+  min-width: 50%;
+  max-width: 85%;
+  width: 35rem;
+  height: 5rem;
+  display: flex;
+  justify-self: center;
+  position: relative;
+  font-size: 3rem;
+  cursor: text;
+  background-color: white;
+  border-radius: 2rem;
+}
+.login__inputs label {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  top: 0;
+  left: 2rem;
+  bottom: 0;
+  height: 100%;
+  color: rgb(151, 151, 151);
+  z-index: 1;
+  transition: 0.3s;
+  cursor: text;
+}
+.login__inputs input {
+  border-radius: 2rem;
+  outline: none;
+  border: 0.2rem solid midnightblue;
+  width: 100%;
+  height: 100%;
+  color: midnightblue;
+  background-color: transparent;
+  z-index: 0;
+  font-size: 2.5rem;
+  padding: 1rem 2rem 0;
+  -moz-appearance: textfield;
+}
+.login__inputs input::-webkit-outer-spin-button, .login__inputs input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+.login__inputs input:focus {
+  box-shadow: 0 0 0.5rem midnightblue;
+}
+.login__inputs input:focus ~ label {
+  height: 50%;
+  font-size: 1.3rem;
+}
+.login__buttons {
+  display: grid;
+  gap: 2rem;
+  border: none;
+  justify-content: center;
+  grid-template-columns: 1fr;
+  grid-template-rows: 7rem 5rem 5rem;
+  min-width: 50%;
+  max-width: 85%;
+  width: 100%;
+  margin: auto;
+}
+.login__buttons::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 25rem;
+  left: 0;
+  right: 0;
+  height: 0.15rem;
+  width: 92%;
+  margin: 0 auto;
+  background-color: gray;
+}
+.login__buttons > *:first-child {
+  margin-bottom: 2rem;
+  height: 5rem;
+  background-color: midnightblue;
+  color: white;
+  box-shadow: 0 0 1rem transparent;
+  transform: scale(0.98);
+  position: relative;
+  padding: 1rem;
+  font-family: consolas;
+  border-radius: 3rem;
+  border: 0 transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  opacity: 0.8;
+  transition: 0.3s;
+}
+.login__buttons > *:first-child:hover {
+  transform: scale(1);
+  box-shadow: 0 0 1rem black;
+  opacity: 1;
+}
+.login__buttons > *:not(:first-child) {
+  height: 5rem;
+  background-color: white;
+  color: midnightblue;
+  box-shadow: 0 0 1rem transparent;
+  transform: scale(0.98);
+  position: relative;
+  padding: 1rem;
+  font-family: consolas;
+  border-radius: 3rem;
+  border: 0 transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  opacity: 0.8;
+  transition: 0.3s;
+}
+.login__buttons > *:not(:first-child):hover {
+  transform: scale(1);
+  box-shadow: 0 0 1rem black;
+  opacity: 1;
+}
+.login__buttons > *[disabled] {
+  pointer-events: none;
+  text-decoration: line-through;
+}
+
+/*# sourceMappingURL=index.css.map */

@@ -1,0 +1,60 @@
+body {
+	& > * {
+		opacity: 0;
+		z-index: -1;
+	}
+	&.body-start > *:not(.preload, aside){
+		opacity: 1;
+		z-index: inherit;
+	}
+}
+
+.preload {
+	position: fixed;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 100vh;
+	background-color: white;
+	opacity: 0;
+	z-index: -1;
+	@include pseudo {
+		display: block;
+		position: fixed;
+		border: 100rem solid red;
+		width: 0;
+		height: 0;
+		animation: preload-BeforeAfter 2s ease infinite alternate;
+		animation-iteration-count: 2;
+		z-index: 2;
+	}
+	@include before("") {
+		top: 0;
+		left: 0;
+		border-right-color: transparent !important;
+		border-bottom-color: transparent !important;
+	}
+	@include after("") {
+		bottom: 0;
+		right: 0;
+		border-left-color: transparent !important;
+		border-top-color: transparent !important;
+	}
+	&-active {
+		animation: preload 2s ease infinite alternate;
+		animation-iteration-count: 2;
+	}
+	&__img {
+		display: block;
+		width: 25rem;
+		height: 25rem;
+		transform: scale(3);
+		animation: preload-Img 2s ease infinite alternate;
+		animation-iteration-count: 2;
+		z-index: 1;
+	}
+}

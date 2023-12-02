@@ -1,0 +1,56 @@
+@keyframes loading {
+  0% {
+    content: "Cargando";
+  }
+  33% {
+    content: "Cargando.";
+  }
+  66% {
+    content: "Cargando..";
+  }
+  100% {
+    content: "Cargando...";
+  }
+}
+@keyframes modalAlert {
+  0% {
+    transform: scale(0);
+  }
+  55% {
+    transform: scale(1.1);
+  }
+  85% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes preload {
+	0% {
+		opacity: 0;
+		z-index: -1;
+	}
+	50%, 100% {
+		opacity: 1;
+		z-index: 1;
+	}
+}
+@keyframes preload-BeforeAfter {
+	0% {
+		border: 100rem solid red;
+	}
+	50%, 100% {
+		border: 45rem solid red;
+		border-top: 10rem solid red;
+		border-bottom: 10rem solid red;
+	}
+}
+@keyframes preload-Img {
+	0% {
+		transform: scale(3);
+	}
+	50%, 100% {
+		transform: scale(1);
+	}
+}

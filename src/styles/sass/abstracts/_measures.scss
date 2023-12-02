@@ -1,0 +1,27 @@
+$breakpoints-x: (
+  xs: 580px,
+  sm: 767px,
+  md: 991px
+);
+$breakpoints-y: (
+  xs: 360px,
+  sm: 450px,
+  md: 540px
+);
+@mixin responsive-x($width) {
+  @media (max-width: map-get($breakpoints-x, $width)) {
+    @content;
+  }
+}
+@mixin responsive-y($height) {
+  @media (max-height: map-get($breakpoints-y, $height)) {
+    @content;
+  }
+}
+@mixin responsive($width, $height) {
+  @media (max-width: map-get($breakpoints-x, $width)) {
+    @media (max-height: map-get($breakpoints-y, $height)) {
+      @content;
+    }
+  }
+}

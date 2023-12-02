@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ONPE | Elecciones Generales 2024</title>
+	<link rel="stylesheet" href="./styles/index.css">
+	<script src="./scripts/index.js" defer></script>
+</head>
+<body>
+	<header></header>
+	<aside class="modal" id="welcome">
+		<section class="modal__container welcome">
+			<article class="welcome__text">
+				<h2 class="modal__title">BIENVENIDO</h2>
+				<p>Este proceso electoral definirá a nuestras autoridades, vota con responsabilidad.</p>
+			</article>
+			<div class="welcome__buttons">
+				<button class="modal__button-close xd" id="welcome-close">Iniciar</button>
+				<a href="#">Info</a>
+			</div>
+		</section>
+	</aside>
+	<main class="page-login">
+		<section class="page-login__left">
+			<picture class="img">
+				<img src="./assets/urna.svg" alt="Ingresa para votar.">
+			</picture>
+		</section>
+		<form action="#" class="login page-login__right" method="get">
+			<legend class="login__title">Estas a punto de votar</legend>
+			<fieldset class="login__inputs">
+				<input id="dni" type="number">
+				<label for="dni">Ingresar DNI:</label>
+			</fieldset>
+			<fieldset class="login__buttons">
+				<button type="submit">INGRESAR</button>
+				<button>BIOMETRIA</button>
+				<button disabled>HUELLA DACTILAR</button>
+			</fieldset>
+		</form>
+	</main>
+	<footer></footer>
+</body>
+</html>
