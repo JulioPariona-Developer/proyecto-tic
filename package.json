@@ -3,9 +3,9 @@
   "name": "proyectofinal_tic",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "start": "node .",
+    "start": "node app.js",
     "dev": "nodemon .",
     "sass": "sass --watch ./src/styles/sass/index.scss ./public/styles/index.css",
     "predeploy": "npm start",

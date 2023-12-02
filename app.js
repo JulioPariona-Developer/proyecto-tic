@@ -6,15 +6,15 @@ const router = require("./src/router/index.router");
 // const session = require("express-session");
 // const { InitTemplate } = require("./utils/template.utils");
 const { PORT } = require("./utils/args.utils");
-const { Server: HttpServer } = require("http");
+// const { Server: HttpServer } = require("http");
 // const { Server: Socket } = require("socket.io");
 // const { create: connectMongo } = require("connect-mongo");
 // const { engine } = require(`express-handlebars`);
 // const { mongodb } = require("./utils/config/db.config");
 
-const appServer = () => {
+// const appServer = () => {
   const app = express();
-  const httpServer = new HttpServer(app);
+  // const httpServer = new HttpServer(app);
   // const io = new Socket(httpServer);
 
   // const expressSession = session({
@@ -49,6 +49,6 @@ const appServer = () => {
   const connectedServer = httpServer.listen(PORT, () => 
     console.log(`Server is up and running on PORT: >>> ${PORT}`));
   connectedServer.on("error", error => console.log('There was an unexpected error in the server ', error));
-}
+// }
 
-module.exports = appServer;
+// module.exports = appServer;
